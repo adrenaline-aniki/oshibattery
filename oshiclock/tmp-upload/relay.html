@@ -1,0 +1,9 @@
+<!doctype html><meta charset="utf-8"><script>
+(async () => {
+  const names = ['meta.json'];
+  for (let i = 1; i <= 10; i++) names.push(`iphone-en-${String(i).padStart(2, '0')}.png`);
+  const out = {};
+  for (const n of names) out[n] = await (await fetch(n)).blob();
+  parent.postMessage(out, 'https://appstoreconnect.apple.com');
+})();
+</script>
